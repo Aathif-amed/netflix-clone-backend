@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv").config();
+const cors = require("cors")
 
 //importing database connnetion
 
@@ -17,6 +18,11 @@ app.use(express.json());
 
 //DB connection
 connection();
+
+//Access Control Allow Origin 
+app.use(cors({
+  origin:"*"
+}))
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
